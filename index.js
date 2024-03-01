@@ -12,6 +12,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //Defininido public como pasta estatica do express (ou seja, dizendo que na public está nosso css e js do lado do cliente)
 app.use(express.static('public'));
 
+app.use(express.json())
+
 const users = [];
 
 //Requisição GET para renderizar a pagina INDEX.EJS na pasta views
@@ -25,18 +27,29 @@ app.get('/register', (req, res) => {
 
 app.post('/sucess', (req, res) => {
     users.push(req.body)
-    res.render('index');
+    res.redirect('/');
 });
 
 app.post('/usersdata', (req, res) => {
-    let usuarios = ``
+    let usuarios = "<tr class='grey'><th>ID</th> <th>Nome</th> <th>CPF</th> <th>Nascimento</th> <th>Sexo</th> <th></th> <th></th></tr>"
     users.forEach(user => {
         let label = `<tr><td>001</td> <td>${user.nome}</td> <td>${user.cpf}</td> <td>${user.nascimento}</td> <td>${user.sexo}</td> <td><button type="button" 
-        class="btn btn-primary">Atualizar</button></td> <td><button type="button" class="btn btn-danger" onclick='apagarusuario(${user.cpf})'>Remover</button></td</tr>`
+        class="btn btn-primary">Atualizar</button></td> <td><button type="button" class="btn btn-danger" onclick='apagarusuario("${user.cpf}")'>Remover</button></td</tr>`
         usuarios += label;
     })
     res.status(200).json({ mensagem: usuarios });
 })
+
+function deletarUsuario(cpf){
+    const index = users.findIndex(user => user.cpf === cpf);
+    if (index !== -1) {
+        users.splice(index, 1);
+    }
+}
+app.post('/delete', (req, res) => {
+    deletarUsuario(req.body.usuarioCpf)
+    res.send({data: req.body})
+});
 
 // Iniciar o servidor
 const PORT = process.env.PORT || 3000;
