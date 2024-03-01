@@ -19,11 +19,11 @@
             <hr>
             <div class="col-md-12">
                 <label class="form-label">Nome</label>
-                <input type="text" class="form-control" value="" placeholder="Meu Nome" name="nome">
+                <input type="text" class="form-control" value="" placeholder="Meu Nome" name="nome"  min="3" required>
             </div>
             <div class="col-md-4">
                 <label class="form-label">CPF</label>
-                <input type="text" class="form-control" value="" placeholder="000.000.000-00" name="cpf">
+                <input type="text" class="form-control" value="" placeholder="000.000.000-00" name="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" max="14" required>
             </div>
             <div class="col-md-4">
                 <label class="form-label">Data Nascimento</label>
@@ -51,17 +51,17 @@
             </div>
             <div class="col-md-6">
                 <label class="form-label">Renda Mensal</label>
-                <input type="number" class="form-control" placeholder="0,00" name="renda">
+                <input type="float" class="form-control" placeholder="0,00" name="renda">
             </div>
             <h2>Endereço</h2>
             <hr>
             <div class="col-md-6">
                 <label class="form-label">Logradouro</label>
-                <input type="text" class="form-control" placeholder="Cidade Universitária" name="logradouro">
+                <input type="text" class="form-control" placeholder="Cidade Universitária" name="logradouro" min="3" required>
             </div>
             <div class="col-md-3">
                 <label class="form-label">Número</label>
-                <input type="text" class="form-control" placeholder="N" name="numero">
+                <input type="number" class="form-control" placeholder="N" name="numero">
             </div>
             <div class="col-md-3">
                 <label class="form-label">Complemento</label>
@@ -101,8 +101,8 @@
                 </select>
             </div>
             <div class="col-md-6">
-                <label class="form-label">Cidade</label>
-                <input type="text" class="form-control" placeholder="Maceió" name="cidade">
+                <label class="form-label" >Cidade</label>
+                <input type="text" class="form-control" placeholder="Maceió" name="cidade" min="3">
             </div>
             <div class="col-12">
                 <button class="btn btn-primary" type="submit">Enviar</button>
