@@ -10,6 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+        <script src="/js/registerscript.js"></script>
 </head>
 
 <body>
@@ -19,7 +20,7 @@
             <hr>
             <div class="col-md-12">
                 <label class="form-label">Nome</label>
-                <input type="text" class="form-control" value="" placeholder="Meu Nome" name="nome"  min="3" required>
+                <input type="text" class="form-control" value="" placeholder="Meu Nome" name="nome" pattern=".{3,}" required>
             </div>
             <div class="col-md-4">
                 <label class="form-label">CPF</label>
@@ -29,14 +30,14 @@
                 <label class="form-label">Data Nascimento</label>
                 <div class="input-group has-validation">
                     <input type="date" class="form-control"
-                        aria-describedby="inputGroupPrepend" name="nascimento">
+                        aria-describedby="inputGroupPrepend" name="nascimento" onchange="validardataDeNascimento(this.value);" id="nascimento" required>
                 </div>
             </div>
             <div class="col-md-4">
                 <label class="form-label">Sexo</label>
                 <div>
-                    <input type="radio" name="sexo" id="masc" value="masc"> Masculino
-                    <input type="radio" name="sexo" id="fem" value="fem"> Feminino
+                    <input type="radio" name="sexo" id="masc" value="Masculino" required> Masculino
+                    <input type="radio" name="sexo" id="fem" value="Feminino" required> Feminino
                 </div>
             </div>
             <div class="col-md-6">
@@ -51,21 +52,21 @@
             </div>
             <div class="col-md-6">
                 <label class="form-label">Renda Mensal</label>
-                <input type="float" class="form-control" placeholder="0,00" name="renda">
+                <input type="float" class="form-control" placeholder="0,00" name="renda" required>
             </div>
             <h2>Endereço</h2>
             <hr>
             <div class="col-md-6">
                 <label class="form-label">Logradouro</label>
-                <input type="text" class="form-control" placeholder="Cidade Universitária" name="logradouro" min="3" required>
+                <input type="text" class="form-control" placeholder="Cidade Universitária" name="logradouro" pattern=".{3,}" required>
             </div>
             <div class="col-md-3">
                 <label class="form-label">Número</label>
-                <input type="number" class="form-control" placeholder="N" name="numero">
+                <input type="number" class="form-control" placeholder="Nº" name="numero" required>
             </div>
             <div class="col-md-3">
                 <label class="form-label">Complemento</label>
-                <input type="text" class="form-control" placeholder="Casa, Apto, Loja" name="complemento">
+                <input type="text" class="form-control" placeholder="Casa, Apto, Loja" name="complemento" required>
             </div>
             <div class="col-md-6">
                 <label class="form-label">Estado</label>
@@ -102,7 +103,7 @@
             </div>
             <div class="col-md-6">
                 <label class="form-label" >Cidade</label>
-                <input type="text" class="form-control" placeholder="Maceió" name="cidade" min="3">
+                <input type="text" class="form-control" placeholder="Maceió" name="cidade" pattern=".{3,}" required>
             </div>
             <div class="col-12">
                 <button class="btn btn-primary" type="submit">Enviar</button>
