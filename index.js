@@ -17,6 +17,7 @@ app.use(express.json())
 
 //Nosso 'banco de dados' (variavel que armazena usuarios)
 const users = [];
+let id = 0;
 
 //Requisição GET para renderizar a pagina INDEX.EJS na pasta views
 app.get('/', (req, res) => {
@@ -32,7 +33,10 @@ app.get('/register', (req, res) => {
 //Requisição POST para pegar os usuarios criados no formulario de registro e adicionar ao nosso 'banco de dados' (variavel user)
 //OBS: REQ.BODY é a resposta do nosso form que está sendo enviada
 app.post('/sucess', (req, res) => {
+    req.body.id = id
+    id++
     users.push(req.body)
+    console.log(users)
     res.redirect('/');
 });
 
@@ -42,7 +46,7 @@ app.post('/usersdata', (req, res) => {
     let usuarios = "<tr class='grey'><th>ID</th> <th>Nome</th> <th>CPF</th> <th>Nascimento</th> <th>Sexo</th> <th></th> <th></th></tr>"
     //inicia a pagina carregando o cabecalho da tabela
     users.forEach(user => {
-        let label = `<tr><td>001</td> <td>${user.nome}</td> <td>${user.cpf}</td> <td>${user.nascimento}</td> <td>${user.sexo}</td> <td><button type="button" 
+        let label = `<tr><td>${user.id}</td> <td>${user.nome}</td> <td>${user.cpf}</td> <td>${user.nascimento}</td> <td>${user.sexo}</td> <td><button type="button" 
         class="btn btn-primary">Atualizar</button></td> <td><button type="button" class="btn btn-danger" onclick='apagarusuario("${user.cpf}")'>Remover</button></td</tr>`
         usuarios += label;
         //percorre a lista de usuarios criando uma linha dentro da tabela para cada usuario
