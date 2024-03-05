@@ -30,14 +30,74 @@ app.get('/register', (req, res) => {
 });
 
 
+function isvalidnome(nome) {
+    if (nome.length >= 3) {
+        return true
+    } else {
+        return false
+    }
+}
+function isvalidcpf(cpf) {
+    if (cpf.length === 14) {
+        return true
+    } else {
+        return false
+    }
+}
+
+function isvaliddate(data) {
+    let dataAtual = new Date();
+    let datanascimento = new Date(data)
+    if (datanascimento < dataAtual) {
+        return true;
+    } else {
+        return false;
+    }
+}
+function isvalidrenda(renda) {
+    if (renda > 0) {
+        return true
+    } else {
+        return false
+    }
+}
+
+function isvalidnumero(numero) {
+    if (numero > 0) {
+        return true
+    } else {
+        return false
+    }
+}
+
+function isvalidlogradouro(logradouro) {
+    if (logradouro.length >= 3) {
+        return true
+    } else {
+        return false
+    }
+}
+
+function isvalidcidade(cidade) {
+    if (cidade.length >= 3) {
+        return true
+    } else {
+        return false
+    }
+}
 //Requisição POST para pegar os usuarios criados no formulario de registro e adicionar ao nosso 'banco de dados' (variavel user)
 //OBS: REQ.BODY é a resposta do nosso form que está sendo enviada
 app.post('/sucess', (req, res) => {
-    req.body.id = id
-    id++
-    users.push(req.body)
-    console.log(users)
-    res.redirect('/');
+    if(isvalidcidade(req.body.cidade) && isvalidlogradouro(req.body.logradouro) && isvalidnumero(req.body.numero) && isvalidrenda(req.body.renda) &&
+    isvaliddate(req.body.nascimento) && isvalidcpf(req.body.cpf) && isvalidnome(req.body.nome)){
+        req.body.id = id
+        id++
+        users.push(req.body)
+        console.log(users)
+        res.redirect('/');
+    } else {
+        res.status(200).json({ mensagem: 'ERRO AO CRIAR CONTA' });
+    }
 });
 
 //Requisição POST sendo chamada no arquivo script que esta dentro de public e js que carrega todos os usurios que estão dentro do nosso 'banco de dados'

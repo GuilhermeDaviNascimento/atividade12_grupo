@@ -20,17 +20,17 @@
             <hr>
             <div class="col-md-12">
                 <label class="form-label">Nome</label>
-                <input type="text" class="form-control" value="" placeholder="Meu Nome" name="nome" pattern=".{3,}" required>
+                <input type="text" class="form-control" value="" placeholder="Meu Nome" name="nome" pattern=".{3,}" required id="nome" oninput="isvalidnome()">
             </div>
             <div class="col-md-4">
                 <label class="form-label">CPF</label>
-                <input type="text" class="form-control" value="" placeholder="000.000.000-00" name="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" max="14" required>
+                <input type="text" class="form-control" value="" placeholder="000.000.000-00" name="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" max="14" required id="cpf" oninput="isvalidcpf()">
             </div>
             <div class="col-md-4">
                 <label class="form-label">Data Nascimento</label>
                 <div class="input-group has-validation">
                     <input type="date" class="form-control"
-                        aria-describedby="inputGroupPrepend" name="nascimento" onchange="validardataDeNascimento(this.value);" id="nascimento" required>
+                        aria-describedby="inputGroupPrepend" name="nascimento" id="nascimento" required oninput="isvaliddate()">
                 </div>
             </div>
             <div class="col-md-4">
@@ -52,21 +52,21 @@
             </div>
             <div class="col-md-6">
                 <label class="form-label">Renda Mensal</label>
-                <input type="float" class="form-control" placeholder="0,00" name="renda" required>
+                <input type="number" class="form-control" placeholder="0,00" name="renda" required id="renda" oninput="isvalidrenda()">
             </div>
             <h2>Endereço</h2>
             <hr>
             <div class="col-md-6">
                 <label class="form-label">Logradouro</label>
-                <input type="text" class="form-control" placeholder="Cidade Universitária" name="logradouro" pattern=".{3,}" required>
+                <input type="text" class="form-control" placeholder="Cidade Universitária" name="logradouro" pattern=".{3,}" required id="logradouro" oninput="isvalidlogradouro()">
             </div>
             <div class="col-md-3">
                 <label class="form-label">Número</label>
-                <input type="number" class="form-control" placeholder="Nº" name="numero" required>
+                <input type="number" class="form-control" placeholder="Nº" name="numero" required id="numero" oninput="isvalidnumero()">
             </div>
             <div class="col-md-3">
                 <label class="form-label">Complemento</label>
-                <input type="text" class="form-control" placeholder="Casa, Apto, Loja" name="complemento" required>
+                <input type="text" class="form-control" placeholder="Casa, Apto, Loja" name="complemento">
             </div>
             <div class="col-md-6">
                 <label class="form-label">Estado</label>
@@ -103,7 +103,7 @@
             </div>
             <div class="col-md-6">
                 <label class="form-label" >Cidade</label>
-                <input type="text" class="form-control" placeholder="Maceió" name="cidade" pattern=".{3,}" required>
+                <input type="text" class="form-control" placeholder="Maceió" name="cidade" pattern=".{3,}" required id="cidade" oninput="isvalidcidade ()">
             </div>
             <div class="col-12">
                 <button class="btn btn-primary" type="submit">Enviar</button>
