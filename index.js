@@ -29,6 +29,9 @@ app.get('/register', (req, res) => {
     res.render('register');
 });
 
+app.get('/sucess', (req, res) => {
+    res.render('sucess');
+});
 
 function isvalidnome(nome) {
     if (nome.length >= 3) {
@@ -94,7 +97,7 @@ app.post('/sucess', (req, res) => {
         id++
         users.push(req.body)
         console.log(users)
-        res.redirect('/');
+        res.redirect('/sucess');
     } else {
         res.status(200).json({ mensagem: 'ERRO AO CRIAR CONTA' });
     }

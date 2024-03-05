@@ -1,0 +1,16 @@
+.text-principal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 50vh;
+}
+h1{
+    font-size: 100px;
+}
+
+.btn-primary{
+    background-color: aliceblue;
+    color: black;
+    border-color: black;
+}
